@@ -115,13 +115,13 @@ class extcmd_handler_main():
 
     def help(self, name:str=""):
         if name != "": print("----\n! \"name\" parameter will be ignored because this command is not accepts this argument !"); print("----\n\n") ###ppscall###
-        print(f"{self.safe_list_get(self.commands, 0, {}).get('name', 'gcm').uppercase()} - v{self.safe_list_get(self.commands, 0, {}).get('version', '0.0')}\n") ###?.?')}")
+        print(f"{self.safe_list_get(self.commands, 0, {}).get('name', 'gcm').upper()} - v{self.safe_list_get(self.commands, 0, {}).get('version', '0.0')}\n") ###?.?')}")
         print(f"Help for command: {self.safe_list_get(self.commands, 0, {}).get('name', 'gcm')}:")    
         print("arguments:" )
         print("--noreboot / -n : Prevent system from rebooting after update/install is complete.")
         print("commands:" )
         print("install / i : install or update a command.") ### (run \"gcm u\", check  before installing if results as error).")
-        print("update  / u : reload all package list caches.") ### :o###
+        print("update  / u : reload all package list caches.") ### :o###case
         print("list    / l : lists  all packages from package list caches.")
         print("\n\nTo update a package just run \"gcm i <package_name>\"")
     
