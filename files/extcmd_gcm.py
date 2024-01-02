@@ -107,10 +107,16 @@ class extcmd_handler_main():
             print(F.YELLOW+"Rebooting system..."+S.RESET_ALL) ### and cdn###
             print("Running command: \"reboot\"...")
             self.td.processCommand(command='reboot') 
+    def safe_list_get (self, l, idx, default):
+      try:
+        return l[idx]
+      except IndexError:
+        return default
 
     def help(self, name:str=""):
         if name != "": print("----\n! \"name\" parameter will be ignored because this command is not accepts this argument !"); print("----\n\n") ###ppscall###
-        print(f"Help for command: {commands[0].get('name')}:")    
+        print(f"{self.safe_list_get(self.commands, 0, {}).get('name', 'gcm').uppercase()} - v{self.safe_list_get(self.commands, 0, {}).get('version', '0.0')}\n") ###?.?')}")
+        print(f"Help for command: {self.safe_list_get(self.commands, 0, {}).get('name', 'gcm')}:")    
         print("arguments:" )
         print("--noreboot / -n : Prevent system from rebooting after update/install is complete.")
         print("commands:" )
@@ -168,5 +174,5 @@ class extcmd_handler_main():
       else: command(name)    
       
     commands = [
-        {"name": "gcm", 'function': gcm, 'neededArgs': True, 'description': 'Github command manager. (LIKE "APT" IN LINUX OR "WINGET" IN WINDOWS).', 'neededSelf': True}
+        {"name": "gcm", 'function': gcm, 'neededArgs': True, 'description': 'Github command manager. (LIKE "APT" IN LINUX OR "WINGET" IN WINDOWS).', 'neededSelf': True, 'version': '1.2'}
     ]  
