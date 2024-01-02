@@ -1,6 +1,7 @@
 #import art#
 from art import *
 from colorama import Style as S
+from colorama import Fore  as F
 import platform
 
 class extcmd_handler_main():
@@ -8,21 +9,26 @@ class extcmd_handler_main():
            
     def __init__(self, ____td____):
         self.td = ____td____
-    def txfetch(self, cwd:str="."):
+    def txfetch(self, cwd:str=".", args:list=[]):
         system = self.td.sname
-        version = self.td.sversion ###ae ## #
+        version = self.td.sversion ##}#ae #[0]# #
         release = platform.release()
-        
+        #len#False
         # Display ASCII art logo
         logo = text2art(system)
-        #print(logo)#
-        print(S.BRIGHT+logo+S.RESET_ALL)
+        if "--nocolor" in args or "-n" in args: #args.get(0)=="--nocolor" or args.get(0)=="-nc":#
+            print(logo)
+        else:    
+            print(S.BRIGHT+F.CYAN+logo+S.RESET_ALL)
 
         # Display system information
         print(f"System: {system}")
         print(f"Release: {release}")
         print(f"Version: {version}")
+
+        if "--help" in args or "-h" in args: #iiher
+            print(f"\n\n---------------\nHelp for \"{self.commands.get(0, {}).get('name', 'txfetch')}\":\n--help / -h : show this help message.\n--nocolor / -n : disable colors.\n---------------") 
       
     commands = [
-        {"name": "txfetch", 'function': txfetch, 'neededArgs': False, 'description': 'Like a neofetch program.' , 'neededSelf': True}
+        {"name": "txfetch", 'function': txfetch, 'neededArgs': True, 'description': 'Like a neofetch program.' , 'neededSelf': True}
         ]
