@@ -1,5 +1,6 @@
 #import art#
 from art import *
+from colorama import Style as S
 import platform
 
 class extcmd_handler_main():
@@ -14,7 +15,8 @@ class extcmd_handler_main():
         
         # Display ASCII art logo
         logo = text2art(system)
-        print(logo)
+        #print(logo)#
+        print(S.BRIGHT+logo+S.RESET_ALL)
 
         # Display system information
         print(f"System: {system}")
