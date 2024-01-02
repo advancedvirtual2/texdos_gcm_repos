@@ -33,7 +33,7 @@ class extcmd_handler_main():
 
         if "--help" in args or "-h" in args: #iiher
             print(f"\n\n---------------\nHelp for \"{self.safe_list_get(self.commands, 0, {}).get('name', 'txfetch')}\":\n--help / -h : show this help message.\n--nocolor / -n : disable colors.\n---------------") 
-      
+       
     commands = [
         {"name": "txfetch", 'function': txfetch, 'neededArgs': True, 'description': 'Like a neofetch program.' , 'neededSelf': True}
         ]
