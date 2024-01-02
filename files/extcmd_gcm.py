@@ -63,7 +63,7 @@ class extcmd_handler_main():
         with open(os.path.join(self.gcm_dir, "cache", f"{repos_name.replace('/', ';')}.txt"), 'a') as fa: 
             fa.write(data)
     
-    def install(self, name:str=""):
+    def install(self, name:str="", noreboot:bool=False):
         if name == '':
             raise Exception("Package name can not be empty!")
         print(f"Searching \"{name}\"...")    
@@ -101,9 +101,24 @@ class extcmd_handler_main():
             print(F.GREEN+f"Written {bytecount} bytes."+S.RESET_ALL)
         print(F.GREEN+S.BRIGHT+"OK!"+S.RESET_ALL)
         time.sleep(0.135)
-        print("Running command: \"reboot\"...")
-        self.td.processCommand(command='reboot') 
-        
+        if noreboot:
+            print(F.YELLOW+"Auto reboot is diabled!\nTo use installed/updated command, please, reboot your system..."+S.RESET_ALL) ###S>) #,ceserupdated
+        else:
+            print(F.YELLOW+"Rebooting system..."+S.RESET_ALL) ### and cdn###
+            print("Running command: \"reboot\"...")
+            self.td.processCommand(command='reboot') 
+
+    def help(self, name:str=""):
+        if name != "": print("----\n! \"name\" parameter will be ignored because this command is not accepts this argument !"); print("----\n\n") ###ppscall###
+        print(f"Help for command: {commands[0].get('name')}:")    
+        print("arguments:" )
+        print("--noreboot / -n : Prevent system from rebooting after update/install is complete.")
+        print("commands:" )
+        print("install / i : install or update a command.") ### (run \"gcm u\", check  before installing if results as error).")
+        print("update  / u : reload all package list caches.") ### :o###
+        print("list    / l : lists  all packages from package list caches.")
+        print("\n\nTo update a package just run \"gcm i <package_name>\"")
+    
     def gcm(self, cwd:str=".", args:list=[]):
       name=""
       command=None
@@ -147,7 +162,10 @@ class extcmd_handler_main():
           command= self.list
       elif command == 'u' or command == 'update':
           command= self.update_cache
-      command(name)  
+      elif command == 'h' or command == 'help':
+          command= self.help 
+      if command == self.install: command(name, "--noreboot" in args or "-n" in args)  
+      else: command(name)    
       
     commands = [
         {"name": "gcm", 'function': gcm, 'neededArgs': True, 'description': 'Github command manager. (LIKE "APT" IN LINUX OR "WINGET" IN WINDOWS).', 'neededSelf': True}
