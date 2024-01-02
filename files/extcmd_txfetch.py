@@ -5,7 +5,7 @@ from colorama import Fore  as F
 import platform
 
 class extcmd_handler_main():
-    def safe_list_get (l, idx, default):
+    def safe_list_get (self, l, idx, default):
       try:
         return l[idx]
       except IndexError:
