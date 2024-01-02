@@ -6,6 +6,9 @@ class extcmd_handler_main():
     def __init__(self, ____td____):
         self.td = ____td____
     def cat(cwd:str=".", args:list=[]):
+      if len(args)==0:
+          print("Usage: \"cat <file_name> ...\".")
+          return
       for i in args:
         path=None
         if not i.startswith("/"):#os.path.join(".",i) self, #+i
@@ -19,5 +22,5 @@ class extcmd_handler_main():
         #  path=cwd+args
       
     commands = [
-        {"name": "cat", 'function': cat, 'neededArgs': True, 'description': 'Like a Linux "cat" command, print all contents of all files in arguments..."} ###) ###commandsfor\"linux
+        {"name": "cat", 'function': cat, 'neededArgs': True, 'description': 'Like a Linux "cat" command, print all contents of all files in arguments...'} ###"} ###) ###commandsfor\"linux
          ]
