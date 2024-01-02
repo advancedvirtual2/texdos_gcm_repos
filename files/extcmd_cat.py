@@ -1,4 +1,11 @@
+from colorama import Style as S
+from colorama import Fore as F ###FR###
+_FR__=F.RED
+_SRA_=S.RESET_ALL
+_SB__=S.BRIGHT
 
+import os
+###
 
 class extcmd_handler_main():
     td = None    
@@ -7,7 +14,7 @@ class extcmd_handler_main():
         self.td = ____td____
     def cat(cwd:str=".", args:list=[]):
       if len(args)==0:
-          print("Usage: \"cat <file_name> ...\".")
+          print(_FR__+_SB__+"Usage: \"cat <file_name> ...\"."+_SRA_)
           return
       for i in args:
         path=None
