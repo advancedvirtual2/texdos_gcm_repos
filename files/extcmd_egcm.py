@@ -86,7 +86,7 @@ class extcmd_handler_main():
                          if iis[0] == name:
                              tqdm.tqdm.write(f"Found \"{name}\" in repository: \"{repos_name}\"!")
                              isFound=True
-                             if len(iis)>=2:
+                             if len(iis)>=3: ##2:
                                  if iis[2] == "system-component": ###-update": #"non-command":
                                      inp=input(f"This is a system component, if something went wrong, it can damage your \"{self.td.sname}\" system.\nAre you want to continue [y/N]: ") #    ##you cadis")
                                      if inp.lower()=='y':
