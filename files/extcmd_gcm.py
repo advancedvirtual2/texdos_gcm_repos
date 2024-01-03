@@ -111,7 +111,22 @@ class extcmd_handler_main():
         return l[idx]
       except IndexError:
         return default
-
+    def remove(self, name:str=""):
+        name_="" #extcmd_{name}#extcmd_{name}#None extcmd_{name}# extcmd_{name}##NAME
+        if name=="": ###///str=="":
+            print("Usage: \"gcm r <package_name>\"")
+            return
+        if name.startswith("m_"): #e
+            name_+=name[2:]
+        else:
+            name_="extcmd_"+name
+        name_+=".py"
+        if os.path.exists(os.path.join("system", name_)): print(f"Removing package: \"{name}\"...") ; shutil.move(os.path.join("system", name_), os.path.join("system", f"no_{name_[:-3]}_{ttt.shttxt(str(datetime.datetime.now()), '_')}.py"))           
+        else:raise FileNotFoundError(f"Can not find package file: \"{name_}\" (PACKAGE: \"{name}\") ....") ### ..................  ... ... ....") #c
+            #print#
+        
+        #ELSE#
+    
     def help(self, name:str=""):
         if name != "": print("----\n! \"name\" parameter will be ignored because this command is not accepts this argument !"); print("----\n\n") 
         print(f"{self.safe_list_get(self.commands, 0, {}).get('name', 'gcm').upper()} - v{self.safe_list_get(self.commands, 0, {}).get('version', '0.0')}\n") 
@@ -156,7 +171,7 @@ class extcmd_handler_main():
         time.sleep(0.315) 
         print("OK!")
       if len(args)==0:
-          raise Exception("No action is selected. Please select action from this list: [u]pdate, [l]ist, [i]nstall...")
+          raise Exception("No action is selected. Please select action from this list: [u]pdate, [l]ist, [i]nstall, [h]elp, [r]emove...")
       if len(args)>=1:
           command=args[0]
       if len(args)>=2:
@@ -169,6 +184,11 @@ class extcmd_handler_main():
           command= self.update_cache
       elif command == 'h' or command == 'help':
           command= self.help 
+      elif command == 'r' or command == 'remove':    
+          command= self.remove # ve#e
+      else:
+          print("Incorrent command, see help (\"gcm h\")...")    
+          command = self.help
       if command == self.install: command(name, "--noreboot" in args or "-n" in args)  
       else: command(name)    
       
