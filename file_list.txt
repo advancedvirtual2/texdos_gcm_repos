@@ -5,3 +5,6 @@ cat|1.1
 root|1.0
 renameos|1.0
 egcm|1.62
+__init__|1.1|system-component
+main|1.1|system-component
+commands|1.1|system-component
