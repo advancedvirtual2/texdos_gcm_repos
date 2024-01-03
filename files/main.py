@@ -66,10 +66,17 @@ class texdos():
     
         loop_override = None
         enableDefaultMainLoop = False
-    
+        #Events=EventStore()
+        #runEvents=Events.runEvents
+        
         cwd = "/"
         cmdlinestart = " >>> "
         def __init__(self, cwd:str="/", cmdlinestart:str=" >>> ", loop_override=None, enableDefaultMainLoop:bool=True):
+            #self.Events=self.EventStore(self)        
+            #self.runEvents=self.Events.runEvents
+            
+            self.Events.setSystemInstance(self)
+            
             self.loop_override
             self.enableDefaultMainLoop
             try:
@@ -329,6 +336,9 @@ class texdos():
             
             
             """
+            ###self.runEvents(self.Events.AfterStart) ###
+            eventresult = self.runEvents(self.Events.AfterStart) 
+            print(f"Processed {eventresult[0]}/{eventresult[1]} of \"AfterStart\" events is successfully.")
             
             
             if self.runinloop:
@@ -353,6 +363,8 @@ class texdos():
             Returns:
                 bool: if command passed to 100% it will return True
             """
+            eventresult=self.runEvents(self.Events.BeforeInit) #Start)   
+            print(f"Processed {eventresult[0]}/{eventresult[1]} of \"BeforeInit\" events is successfully.")   
             
             self.enableDefaultMainLoop = True
             
@@ -385,12 +397,44 @@ class texdos():
                     os.system(f"CLS")
                 else:
                     os.system(f"clear")    
-                  
+            eventresult=self.runEvents(self.Events.AfterInit) #Start)   
+            print(f"Processed {eventresult[0]}/{eventresult[1]} of \"AfterInit\" events is successfully.")   
             
             return True        
+        class EventStore:
+            AfterStart =[]
+            AfterInit  =[]
+            BeforeInit =[]
+            td=None
+            def __init__(self, __td__=None, AfterStartEvents:list=[], AfterInitEvents:list=[], BeforeInitEvents:list=[]):
+                if AfterStartEvents != self.AfterStart: self.AfterStart=AfterStartEvents
+                if AfterInitEvents != self.AfterInit: self.AfterInit=AfterInitEvents
+                #if AfterStartEvents != self.AfterStart: self.AfterStart=AfterStartEvents
+                if BeforeInitEvents != self.BeforeInit: self.BeforeInit=BeforeInitEvents   ###+self.AfterStart=   ### ## ## # # ### ## #AfterStartEvents     
+            def setSystemInstance(self, __td__):
+                self.td=__td__; return True    
+            def runEvents(self, EventList:list=[], payload=None):    
+                payload_f={"system": self.td, "payload": payload}
+                isok_counter=0
+                total_counter=0
+                for i in EventList: #tosend_data##tsListl ## #
+                    total_conter+=1
+                    try:
+                        if i(payload_f) != False: ###e + # ##
+                            isok_counter+=1
+                    except Exception as e:
+                        print("Error: \"{e}\" at event processor.")    
+                return (isok_counter, total_counter)        
+                    ###    
+        Events=EventStore()
+        runEvents=Events.runEvents
                 
+        #Events=EventStore(self)        
+        #runEvents=Events.runEvents
         def run(self, sys_name:str = "TXDOS", cmd_title:str=None, sys_version:float=1.0):
             """Starts main loop and performs default settings."""
+            eventresult=self.runEvents(self.Events.BeforeInit) #Start)   
+            print(f"Processed {eventresult[0]}/{eventresult[1]} of \"BeforeInit\" events is successfully.")   
             
             
             self.enableDefaultMainLoop = True
@@ -411,6 +455,8 @@ class texdos():
                     clmainit(convert=True)  
             else:    
                 clmainit()      
+            #eventresult=self.runEvents(self.Events.AfterInit) #Start)   
+            #print(f"Processed {eventresult[0]}/{eventresult[1]} of \"AfterInit\" events is successfully.")  
                 
             self.running = True
             if self.setCmdTitle:
@@ -420,7 +466,10 @@ class texdos():
                     os.system(f"CLS")
                 else:
                     os.system(f"clear") 
-             
+            eventresult=self.runEvents(self.Events.AfterInit) #Start)   
+            print(f"Processed {eventresult[0]}/{eventresult[1]} of \"AfterInit\" events is successfully.")  
+            eventresult = self.runEvents(self.Events.AfterStart) 
+            print(f"Processed {eventresult[0]}/{eventresult[1]} of \"AfterStart\" events is successfully.")
             if self.runinloop:
                 
                 while self.running:
