@@ -13,6 +13,7 @@ class extcmd_handler_main:
             if troot == None: print("\"troot\" command is not found!"); return 
             else:
                 troot['name']='root'
+                troot['neededSelf']=True ###f']=TY ## #
     def __init__(self, __td__):
         self.td=__td__
         self.td.Events.AfterInit.append(self.rename_troot)
