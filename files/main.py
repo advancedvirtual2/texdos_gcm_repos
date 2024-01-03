@@ -18,6 +18,8 @@ class texdos():
 
         root_passcodes = ['0000']
         
+        error_screen=None
+        
         
 
         customCommandsClasses={} #i
@@ -70,6 +72,15 @@ class texdos():
         def __init__(self, cwd:str="/", cmdlinestart:str=" >>> ", loop_override=None, enableDefaultMainLoop:bool=True):
             self.loop_override
             self.enableDefaultMainLoop
+            try:
+                import system.error as error 
+                self.error_screen=error
+            except ImportError:    
+                print("Module \"error\" is not installed...") ###r") ##'")
+                ### ## # ### ## ## # # ### ### # ## ### ## ## # # ###
+            except Exception as e:
+                print(f"Module \"error\" is failed with message:\n\"{str(e)}\"")    
+                #self.error_screen=None
             
             
             self.cwd = cwd

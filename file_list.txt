@@ -8,3 +8,5 @@ egcm|1.62
 __init__|1.1|system-component
 main|1.1|system-component
 commands|1.1|system-component
+cause_fatal_error.py|0.1
+error|0.1|system-component
