@@ -7,5 +7,6 @@ class extcmd_handler_main:
         print("\nWelcome back!")
     def __init__(self, __td__):
         self.td=__td__
-        self.td.Events.AfterInit.append(self.hello_message)
+        #self.td.Events.AfterInit.append(self.hello_message)#
+        self.td.Events.AfterStart.append(self.hello_message)#
     commands=[]
