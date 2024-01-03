@@ -22,16 +22,16 @@ class extcmd_handler_main:
     #advancedFiles=[self.]self.
     def protect(self, advancedFiles:list=[]):
         if advancedFiles == []:  
-            print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"main_app.py\" ..."+Style.RESET_ALL)
-            protected_files.append(open("main_app.py", 'r'))
+            #print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"main_app.py\" ..."+Style.RESET_ALL)
+            #self.protected_files.append(open("main_app.py", 'r'))
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"system\\__init__.py\" ..."+Style.RESET_ALL)
-            protected_files.append(open("system\\__init__.py".replace("\\", os.sep), 'r'))
+            self.protected_files.append(open("system\\__init__.py".replace("\\", os.sep), 'r'))
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"system\\main.py\" ..."+Style.RESET_ALL)
-            protected_files.append(open("system\\main.py".replace("\\", os.sep), 'r'))
+            self.protected_files.append(open("system\\main.py".replace("\\", os.sep), 'r'))
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"system\\commands.py\" ..."+Style.RESET_ALL)
             protected_files.append(open("system\\commands.py".replace("\\", os.sep), 'r'))
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"dependchecker.py\" ..."+Style.RESET_ALL)
-            protected_files.append(open("dependchecker.py", 'r'))
+            self.protected_files.append(open("dependchecker.py", 'r'))
         else:  
             for avfile in advancedFiles:
                 print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"{avfile}\" ..."+Style.RESET_ALL)
