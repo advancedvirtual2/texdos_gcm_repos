@@ -11,4 +11,5 @@ renameos|1.0
 egcm|1.76
 cause_fatal_error|0.1
 protections|0.1b
-troot_is_root|0.51b
+troot_is_root|0.52b
+extend_startup|0.12b
