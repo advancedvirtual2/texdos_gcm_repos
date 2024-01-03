@@ -35,7 +35,7 @@ class extcmd_handler_main:
         else:  
             for avfile in advancedFiles:
                 print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"{avfile}\" ..."+Style.RESET_ALL)
-                protected_files.append(open(avfile.replace("\\", os.sep), 'r'))
+                self.protected_files.append(open(avfile.replace("\\", os.sep), 'r'))
                 #
 
 
