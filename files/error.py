@@ -23,7 +23,7 @@ class error:
         #self.td.running = False#-- // //-- --###
         ###if not self.td.stop()###
         
-        self.td.stop(-1, silent=False, allowExit=False) ###, , fa)###
+        self.td.stop(-1, silent=False, allowExits=False) ###, , fa)###
         
         
         logo=text2art(self.td.sname )
