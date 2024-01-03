@@ -11,7 +11,10 @@ class extcmd_handler_main():
         
     
     def openurl(cwd:str=".", args:list=[]):    
-        
+        if len(args) == 0:
+            print('Usage: "openurl <url>"')
+            return
+        ###print("Opening \"{}\"")###
         webbrowser.open(" ".join(args))
       
     def getHeaders(cwd:str=".", args:list=[]):     
