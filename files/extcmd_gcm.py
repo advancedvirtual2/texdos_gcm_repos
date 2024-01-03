@@ -35,7 +35,7 @@ class extcmd_handler_main():
                      fr.close()
                      for ii in dsi.splitlines():
                          data=f"{ii.split('|')[0]}=={ii.split('|')[1]}"
-                         iis=ii
+                         iis=ii.split('|')
                          if len(iis)>=3: ##2:
                                  if iis[2] == "system-component":
                                      data+=" {SYS}"
