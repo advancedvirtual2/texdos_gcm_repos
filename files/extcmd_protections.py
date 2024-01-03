@@ -81,9 +81,9 @@ class extcmd_handler_main:
         #    
 
     commands = [
-        {'name': 'getProtectedFiles', 'function': getProtectedFiles, 'neededArgs': False, "neededSelf": True},{'name': 'reprotect', 'function': reprotect, 'neededArgs': False , 'description': "Restarts protectors for system files.", "neededSelf": True},{'name': 'unprotect', 'function': unprotect, 'neededArgs': False , 'description': "Shutdowns protectors for system files.", "neededSelf": True}
+        {'name': 'getProtectedFiles', 'function': getProtectedFiles, 'neededArgs': False, "neededSelf": True},{'name': 'reprotect', 'function': reprotect, 'neededArgs': False , 'description': "Restarts protectors for system files.", "neededSelf": True},{'name': 'unprotect', 'function': unprotect, 'neededArgs':  True, 'description': "Shutdowns protectors for system files.", "neededSelf": True}
         #td.makeCommand('reprotect', reprotect, False, "Restarts protectors for system files."),
-        #td.makeCommand("unprotect", unprotect, description="Shutdowns protectors for system files.")
+        #td.makeCommand("unprotect", unprotect, description="Shutdowns protectors for system files.")False
     ]
     
 #/self./*
