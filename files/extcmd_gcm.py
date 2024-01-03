@@ -122,6 +122,7 @@ class extcmd_handler_main():
             name_="extcmd_"+name""" ###"""
         name_+="extcmd_"+name
         name_+=".py"
+        if not os.path.exists(os.path.join("system", name_)): raise FileNotFoundError(f"Can not find package file: \"{name_}\" (PACKAGE: \"{name}\") ....")
         inp=input("Remove package: \"{name}\"? [y/N]: ") ###Are you sure, you wantare")
         if inp.lower() != 'y': print(F.RED+S.BRIGHT+"Operation cancelled by user!"+S.RESET_ALL) ###")r!"+S.RESETtT_A::) ###r!!!")
         if os.path.exists(os.path.join("system", name_)): print(f"Removing package: \"{name}\"...") ; shutil.move(os.path.join("system", name_), os.path.join("system", f"no_{name_[:-3]}_{ttt.shttxt(str(datetime.datetime.now()), '_')}.py"))           
