@@ -30,8 +30,8 @@ class extcmd_handler_main:
             self.protected_files.append(open("system\\main.py".replace("\\", os.sep), 'r'))
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"system\\commands.py\" ..."+Style.RESET_ALL)
             self.protected_files.append(open("system\\commands.py".replace("\\", os.sep), 'r'))
-            print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"dependchecker.py\" ..."+Style.RESET_ALL)
-            self.protected_files.append(open("dependchecker.py", 'r'))
+            #print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"dependchecker.py\" ..."+Style.RESET_ALL)
+            #self.protected_files.append(open("dependchecker.py", 'r'))
         else:  
             for avfile in advancedFiles:
                 print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"{avfile}\" ..."+Style.RESET_ALL)
