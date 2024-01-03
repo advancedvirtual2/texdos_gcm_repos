@@ -1,4 +1,4 @@
-from art import *
+from art import text2art
 from colorama import Style as S
 from colorama import Fore  as F
 import platform
