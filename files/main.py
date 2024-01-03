@@ -418,7 +418,7 @@ class texdos():
                 isok_counter=0
                 total_counter=0
                 for i in EventList: #tosend_data##tsListl ## #
-                    total_conter+=1
+                    total_counter+=1
                     try:
                         if i(payload_f) != False: ###e + # ##
                             isok_counter+=1
