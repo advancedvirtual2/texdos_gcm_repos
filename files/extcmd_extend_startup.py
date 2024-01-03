@@ -1,6 +1,6 @@
 class extcmd_handler_main:
     td=None
-    def hello_message(payload_):
+    def hello_message(self, payload_):
         td=payload_.get('system')
         payload=payload_.get('payload')
         
