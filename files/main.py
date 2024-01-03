@@ -741,10 +741,27 @@ class texdos():
             self.running = False
             delay(1.895/2) 
             if self.am != 'root':
-                if len(self.root_passcodes) > 0:
-                    self.processCommand('root', [self.root_passcodes[0], "dontsavestate"])   #, True
+                isinstalled=False
+                for i in self.externalCommands:
+                    if i.get('name') == 'root': #unprotect':
+                        isinstalled=True # ##=tRUE
+                        break
+                if isinstalled: 
+                  if len(self.root_passcodes) > 0:
+                    self.processCommand('root', [self.root_passcodes[0], "dontsavestate"]) 
+                else:    
+                  print('using "troot" because "root" is not installed.')  
+                  if len(self.root_passcodes) > 0:
+                    self.processCommand('troot', [self.root_passcodes[0], "dontsavestate"])   #t,Up True
             if self.am == 'root':
-                self.processCommand('unprotect', ['nowarn'])
+                isinstalled=False
+                for i in self.externalCommands:
+                    if i.get('name') == 'unprotect':
+                        isinstalled=True ###=tRUE
+                        break
+                if isinstalled: self.processCommand('unprotect', ['nowarn'])
+                else:
+                    print("UNPROTECT COMMAND IS NOT FOUND, IGNORING... .")
             delay(1.895/2) 
             if allowExits:
                 sys.exit()
