@@ -88,7 +88,9 @@ class extcmd_handler_main():
                              isFound=True
                              if len(iis)>=3: ##2:
                                  if iis[2] == "system-component": ###-update": #"non-command":
-                                     inp=input(f"This is a system component, if something went wrong, it can damage your \"{self.td.sname}\" system.\nAre you want to continue [y/N]: ") #    ##you cadis")
+                                     #inp=input(f"This is a system component, if something went wrong, it can damage your \"{self.td.sname}\" system.\nAre you want to continue [y/N]: ") #    ##you cadis")
+                                     tqdm.tqdm.write(f"{F.YELLOW}This is a system component, if something went wrong, it can damage your \"{self.td.sname}\" system.{S.RESET_ALL}\n{F.CYAN}Are you want to continue [y/N]: {S.RESEt_ALL}") ###TALLsF}") #    ##you cadis")###
+                                     inp=input() #mp
                                      if inp.lower()=='y':
                                          prefix=''    
                                      else:
