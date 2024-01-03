@@ -88,14 +88,16 @@ class extcmd_handler_main():
                              isFound=True
                              if len(iis)>=2:
                                  if iis[2] == "system-component": ###-update": #"non-command":
-                                     prefix=''    
-                                 else: 
-                                     inp=input(f"This is a system component, if something went wrong, it can damage your \"{self.td.sname}\" system.\nAre you want to continue [y/N]: ") ###you cadis")
+                                     inp=input(f"This is a system component, if something went wrong, it can damage your \"{self.td.sname}\" system.\nAre you want to continue [y/N]: ") #    ##you cadis")
                                      if inp.lower()=='y':
-                                         prefix='extcmd_'
+                                         prefix=''    
                                      else:
                                          print(F.RED+"Operation cancelled by user!"+S.RESET_ALL)    
                                          return
+                                 else: 
+                                     prefix='extcmd_'
+                             else: 
+                                     prefix='extcmd_'
                              break
         if not isFound:
             raise FileNotFoundError(f"Failed to search for package \"{name}\". Nothing is found. Check package name or update caches and try again.")                   
