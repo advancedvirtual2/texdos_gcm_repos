@@ -423,7 +423,7 @@ class texdos():
                         if i(payload_f) != False: ###e + # ##
                             isok_counter+=1
                     except Exception as e:
-                        print("Error: \"{e}\" at event processor.")    
+                        print(f"Error: \"{e}\" at event processor.")    
                 return (isok_counter, total_counter)        
                     ###    
         Events=EventStore()
