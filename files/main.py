@@ -74,7 +74,7 @@ class texdos():
             self.enableDefaultMainLoop
             try:
                 import system.error as error 
-                self.error_screen=error
+                self.error_screen=error.error(self)
             except ImportError:    
                 print("Module \"error\" is not installed...") ###r") ##'")
                 ### ## # ### ## ## # # ### ### # ## ### ## ## # # ###
