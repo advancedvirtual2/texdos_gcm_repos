@@ -5,8 +5,8 @@ class extcmd_handler_main():
     def __init__(self, __td__): ###id__)#extcmd_handler_main## ## ## # # ### ## #
         self.td=__td__
     def cause_fatal_error(self, cwd:str=".")    :
-        if self.td.error != None:
-            self.td.error.showFailedScreen()
+        if self.td.error_screen != None:
+            self.td.error_screen.showFailedScreen()
         else:
             self.td.stop(-1)    
             
