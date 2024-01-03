@@ -33,5 +33,4 @@ class extcmd_handler_main():
     commands = [
         {'name': 'openurl', 'function': openurl, 'neededArgs': True, 'description': 'Opens a website in web browser.'},
         {'name': 'getHeaders', 'function': getHeaders, 'neededArgs': True, 'description': 'Gets website status code and headers.'}
-        ##{'name': '', 'function': , 'neededArgs': True}##
     ]    

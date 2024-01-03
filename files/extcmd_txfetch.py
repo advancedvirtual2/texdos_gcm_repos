@@ -15,10 +15,10 @@ class extcmd_handler_main():
         self.td = ____td____
     def txfetch(self, cwd:str=".", args:list=[]):
         system = self.td.sname
-        host_system = platform.system() ##y## System
+        host_system = platform.system()
         version = self.td.sversion
         release = platform.release()
-        #len#False
+        
         # Display ASCII art logo
         logo = text2art(system)
         if "--nocolor" in args or "-n" in args:
@@ -31,7 +31,7 @@ class extcmd_handler_main():
         print(f"Version: {version}")
         print(f"Host: {host_system} {release}")
 
-        if "--help" in args or "-h" in args: #iiher
+        if "--help" in args or "-h" in args:
             print(f"\n\n---------------\nHelp for \"{self.safe_list_get(self.commands, 0, {}).get('name', 'txfetch')}\":\n--help / -h : show this help message.\n--nocolor / -n : disable colors.\n---------------") 
        
     commands = [

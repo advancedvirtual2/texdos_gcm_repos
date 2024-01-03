@@ -1,11 +1,10 @@
 from colorama import Style as S
-from colorama import Fore as F ###FR###
+from colorama import Fore as F
 _FR__=F.RED
 _SRA_=S.RESET_ALL
 _SB__=S.BRIGHT
 
 import os
-###
 
 class extcmd_handler_main():
     td = None    
@@ -18,16 +17,14 @@ class extcmd_handler_main():
           return
       for i in args:
         path=None
-        if not i.startswith("/"):#os.path.join(".",i) self, #+i
+        if not i.startswith("/"):
           path=os.path.join(cwd,i)
         else:
           path=os.path.join(".",i)
         with open(path, 'r') as fr:
           print(fr.read())
-      print("\n") ###".")    
-        #if not i.startswith("/"):
-        #  path=cwd+args
+      print("\n")
       
     commands = [
-        {"name": "cat", 'function': cat, 'neededArgs': True, 'description': 'Like a Linux "cat" command, print all contents of all files in arguments...'} ###"} ###) ###commandsfor\"linux
+        {"name": "cat", 'function': cat, 'neededArgs': True, 'description': 'Like a Linux "cat" command, print all contents of all files in arguments...'}
          ]

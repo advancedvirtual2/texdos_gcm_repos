@@ -81,19 +81,18 @@ class extcmd_handler_main():
                      fr.close()
                      for ii in dsi.splitlines():    
                          if ii.split("|")[0] == name:
-                             #print(f"Found \"{name}\" in repository: \"{repos_name}\"!") 
                              tqdm.tqdm.write(f"Found \"{name}\" in repository: \"{repos_name}\"!")
                              isFound=True
                              break
         if not isFound:
-            raise FileNotFoundError(f"Failed to search for package \"{name}\". Nothing is found. Check package name or update caches and try again.") ##!!!!un") #xception("")                     
+            raise FileNotFoundError(f"Failed to search for package \"{name}\". Nothing is found. Check package name or update caches and try again.")                   
         url=self.git_base_url_usercontent.format(repos_name=repos_name, file=f"files/extcmd_{name}.py")
         print(F.YELLOW+f"Downloading file: \"{url}\"..."+S.RESET_ALL)
         r=requests.get(url)
         if r.status_code != 200:
             r.raise_for_status()
         print(F.GREEN+f"Received {len(r.content)} bytes."+S.RESET_ALL)    
-        if os.path.exists(os.path.join("system", f"extcmd_{name}.py")): print("Moving old version...") ; shutil.move(os.path.join("system", f"extcmd_{name}.py"), os.path.join("system", f"no_extcmd_{name}_{ttt.shttxt(str(datetime.datetime.now()), '_')}.py")) #verssssss#{}"#isfile    
+        if os.path.exists(os.path.join("system", f"extcmd_{name}.py")): print("Moving old version...") ; shutil.move(os.path.join("system", f"extcmd_{name}.py"), os.path.join("system", f"no_extcmd_{name}_{ttt.shttxt(str(datetime.datetime.now()), '_')}.py"))   
         print(F.YELLOW+"Writing file..."+S.RESET_ALL)
         with open(os.path.join("system", f"extcmd_{name}.py"), 'ab') as fab:
             bytecount=fab.write(r.content)
@@ -102,9 +101,9 @@ class extcmd_handler_main():
         print(F.GREEN+S.BRIGHT+"OK!"+S.RESET_ALL)
         time.sleep(0.135)
         if noreboot:
-            print(F.YELLOW+"Auto reboot is diabled!\nTo use installed/updated command, please, reboot your system..."+S.RESET_ALL) ###S>) #,ceserupdated
+            print(F.YELLOW+"Auto reboot is diabled!\nTo use installed/updated command, please, reboot your system..."+S.RESET_ALL)
         else:
-            print(F.YELLOW+"Rebooting system..."+S.RESET_ALL) ### and cdn###
+            print(F.YELLOW+"Rebooting system..."+S.RESET_ALL)
             print("Running command: \"reboot\"...")
             self.td.processCommand(command='reboot') 
     def safe_list_get (self, l, idx, default):
@@ -114,14 +113,14 @@ class extcmd_handler_main():
         return default
 
     def help(self, name:str=""):
-        if name != "": print("----\n! \"name\" parameter will be ignored because this command is not accepts this argument !"); print("----\n\n") ###ppscall###
-        print(f"{self.safe_list_get(self.commands, 0, {}).get('name', 'gcm').upper()} - v{self.safe_list_get(self.commands, 0, {}).get('version', '0.0')}\n") ###?.?')}")
+        if name != "": print("----\n! \"name\" parameter will be ignored because this command is not accepts this argument !"); print("----\n\n") 
+        print(f"{self.safe_list_get(self.commands, 0, {}).get('name', 'gcm').upper()} - v{self.safe_list_get(self.commands, 0, {}).get('version', '0.0')}\n") 
         print(f"Help for command: {self.safe_list_get(self.commands, 0, {}).get('name', 'gcm')}:")    
         print("arguments:" )
         print("--noreboot / -n : Prevent system from rebooting after update/install is complete.")
         print("commands:" )
-        print("install / i : install or update a command.") ### (run \"gcm u\", check  before installing if results as error).")
-        print("update  / u : reload all package list caches.") ### :o###case
+        print("install / i : install or update a command.")
+        print("update  / u : reload all package list caches.") 
         print("list    / l : lists  all packages from package list caches.")
         print("\n\nTo update a package just run \"gcm i <package_name>\"")
     
@@ -151,7 +150,7 @@ class extcmd_handler_main():
         print("Updating caches...")
         self.update_cache()
         print("OK!")
-        print("Please, rerun GCM!")
+        #print("Please, rerun GCM!")
       else:
         print("\r"+F.GREEN+"Checking cache..."+S.RESET_ALL)  
         time.sleep(0.315) 
