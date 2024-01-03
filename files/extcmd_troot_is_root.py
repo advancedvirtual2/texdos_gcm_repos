@@ -20,4 +20,4 @@ class extcmd_handler_main:
     def root(self, cwd:str='.', args:list=[]):
         self.td.processCommand("troot", args)
         #pass    #s///
-    commands=[{'name': 'root', 'function': root, 'neededArgs': True, 'description':'Toggle root access mode.', 'neededSelf': True}]
+    commands=[{'name': 'root', 'function': root, 'neededArgs': True, 'description':'Toggle root access mode. (ALIAS TO "troot")', 'neededSelf': True}]
