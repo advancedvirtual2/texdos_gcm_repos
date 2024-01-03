@@ -29,7 +29,7 @@ class extcmd_handler_main:
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"system\\main.py\" ..."+Style.RESET_ALL)
             self.protected_files.append(open("system\\main.py".replace("\\", os.sep), 'r'))
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"system\\commands.py\" ..."+Style.RESET_ALL)
-            protected_files.append(open("system\\commands.py".replace("\\", os.sep), 'r'))
+            self.protected_files.append(open("system\\commands.py".replace("\\", os.sep), 'r'))
             print(Fore.YELLOW+Style.BRIGHT+f"Opening protectors for \"dependchecker.py\" ..."+Style.RESET_ALL)
             self.protected_files.append(open("dependchecker.py", 'r'))
         else:  
