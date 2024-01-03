@@ -1,3 +1,7 @@
+__init__|1.1|system-component
+main|1.1|system-component
+commands|1.1|system-component
+error|0.1|system-component
 openurl|1.22
 txfetch|1.21
 gcm|1.32
@@ -5,8 +9,5 @@ cat|1.1
 root|1.0
 renameos|1.0
 egcm|1.76
-__init__|1.1|system-component
-main|1.1|system-component
-commands|1.1|system-component
 cause_fatal_error|0.1
-error|0.1|system-component
+protections|0.1b
