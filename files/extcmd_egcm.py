@@ -35,6 +35,14 @@ class extcmd_handler_main():
                      fr.close()
                      for ii in dsi.splitlines():
                          data=f"{ii.split('|')[0]}=={ii.split('|')[1]}"
+                         iis=ii
+                         if len(iis)>=3: ##2:
+                                 if iis[2] == "system-component":
+                                     data+=" {SYS}"
+                                 else:
+                                     data+=" {EXT}"  
+                         else:              
+                             data+=" {EXT}" 
                          
                          tqdm.tqdm.write(data)
         else:
@@ -44,6 +52,14 @@ class extcmd_handler_main():
             fr.close()
             for ii in dsi.splitlines():
                          data=f"{ii.split('|')[0]}=={ii.split('|')[1]}"
+                         iis=ii
+                         if len(iis)>=3: ##2:
+                                 if iis[2] == "system-component":
+                                     data+=" {SYS}"
+                                 else:
+                                     data+=" {EXT}"  
+                         else:              
+                             data+=" {EXT}" 
                          print(data)
     
     def update_cache(self, name:str=""):
